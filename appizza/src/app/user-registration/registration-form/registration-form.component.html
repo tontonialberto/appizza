@@ -1,0 +1,140 @@
+<div class="row centered-form">
+  <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Registrazione APPizza!</h3>
+      </div>
+      <div class="panel-body">
+        <form [formGroup]="registrationForm">
+          <div class="form-group">
+            <input 
+              type="text" 
+              class="form-control"
+              formControlName="username"
+              placeholder="Username"
+              required />
+          </div>
+
+          <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6">
+              <div class="form-group">
+                <input 
+                  type="password" 
+                  class="form-control" 
+                  formControlName="password"
+                  placeholder="Password"
+                  required />
+              </div>
+            </div>
+
+            <!--
+            <div class="col-xs-6 col-sm-6 col-md-6">
+              <div class="form-group">
+                <input 
+                  type="password" 
+                  class="form-control" 
+                  formControlName="password"
+                  placeholder="Password"
+                  required />
+              </div>
+            </div> -->
+          </div>
+
+          <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6">
+              <div class="form-group">
+                <input 
+                  type="email" 
+                  class="form-control" 
+                  formControlName="email"
+                  placeholder="Email"
+                  required /> 
+              </div>
+            </div>
+
+            <!--
+            <div class="col-xs-6 col-sm-6 col-md-6">
+              <div class="form-group">
+                <input 
+                  type="email" 
+                  class="form-control" 
+                  formControlName="email"
+                  placeholder="Email"
+                  required /> 
+              </div>
+            </div> -->
+          </div> 
+          
+
+          <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6">
+              <div class="form-group">
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  formControlName="nome"
+                  placeholder="Nome"
+                  required />
+              </div>
+            </div>
+
+            <div class="col-xs-6 col-sm-6 col-md-6">
+              <div class="form-group">
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  formControlName="cognome"
+                  placeholder="Cognome"
+                  required />
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <!--<input 
+              type="number" 
+              class="form-control" 
+              name="userlevel" 
+              [(ngModel)]="user.userlevel"
+              placeholder="Userlevel" />-->
+            
+            <select
+              formControlName="userlevel"
+              class="form-control"
+              required
+              #userLevel>
+              <option value=null>Userlevel</option>
+              <option value=0>Classe</option>
+              <option value=1>Pizzeria</option>
+              <option value=2>Admin</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <input 
+              type="text" 
+              class="form-control" 
+              formControlName="classe"
+              placeholder="Classe"
+              *ngIf="userLevel.value == 0"  />
+          </div>
+          
+          <div class="form-group">
+            <input 
+              type="text" 
+              class="form-control" 
+              formControlName="citta" 
+              placeholder="Città"
+              *ngIf="userLevel.value == 1" />
+          </div>
+
+          <button 
+            type="submit" 
+            class="btn btn-success btn-block" 
+            [disabled]="!registrationForm.valid"
+            (click)="onSubmit()">Registrazione</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

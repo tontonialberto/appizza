@@ -1,0 +1,16 @@
+/*.active-link {
+    background-color: white !important;
+    color: black !important;
+    font-weight: bold;
+}*/
+a {
+    color: rgb(200, 200, 200) !important;
+}
+
+a:hover {
+    color: white !important;
+}
+
+.active-link {
+    border: 1px solid white;
+}
