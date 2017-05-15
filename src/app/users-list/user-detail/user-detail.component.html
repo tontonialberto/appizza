@@ -1,0 +1,64 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        <h3 class="panel-title"><label>{{ user.username }}</label></h3>
+      </div>
+
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-3 col-lg-3" align="center"> 
+            <img 
+              alt="User Pic" 
+              src="" 
+              onerror="this.src='http://appizza.altervista.org/img/default-profile-picture.png'" 
+              class="img-circle img-responsive"> 
+          </div>
+          <div class="col-md-9 col-lg-9">
+            <table class="table table-user-information">
+              <tbody>
+                <tr>
+                  <td><label>Nome:</label></td>
+                  <td>{{ user.nome }}</td>
+                </tr>
+                <tr>
+                  <td><label>Cognome:</label></td>
+                  <td>{{ user.cognome }}</td>
+                </tr>
+                <tr>
+                  <td><label>Email:</label></td>
+                  <td>{{ user.email }}</td>
+                </tr>
+                <tr>
+                  <td><label>User Level:</label></td>
+                  <td>
+                    <label class="label label-success" *ngIf="user.userlevel == 0">Classe</label> 
+                    <label class="label label-danger" *ngIf="user.userlevel == 1">Pizzeria</label> 
+                    <label class="label label-primary" *ngIf="user.userlevel == 2">Admin</label> 
+                  </td>
+                </tr>
+                <tr *ngIf="user.userlevel == 0" >
+                  <td><label>Classe:</label></td>
+                  <td>{{ user.classe }}</td>
+                </tr>
+                <tr *ngIf="user.userlevel == 1" >
+                  <td><label>Situata a:</label></td>
+                  <td>{{ user.citta }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel-footer panel-success" style="padding-bottom: 40px;">
+        <span class="pull-left">
+          <a routerLink="../../users" class="btn btn-sm btn-info"><i class="glyphicon glyphicon-arrow-left"></i> Torna agli utenti</a>
+        </span>
+        <span class="pull-right">
+          <a class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i> Elimina Utente</a>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
