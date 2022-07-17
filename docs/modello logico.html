@@ -1,0 +1,268 @@
+<html>
+    <head><title>Modello logico APPizza</title></head>
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+    <body>
+        <h1>APPIZZA MODELLO LOGICO DATABASE MYSQL</h1>
+
+        <hr />
+
+        <h4>tab_utenti</h4>
+        <table class="table" border="1px">
+            <tr>
+                <th>Nome attributo</th>
+                <th>Tipo</th>
+                <th>Dimensione</th>
+                <th>Vincoli</th>
+                <th>Descrizione</th>
+            </tr>
+            <tr>
+                <td>ID_utente</td>
+                <td>INT</td>
+                <td></td>
+                <td>PRIMARY KEY</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>username</td>
+                <td>VARCHAR</td>
+                <td>50</td>
+                <td>UNIQUE, NOT NULL</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>password</td>
+                <td>VARCHAR</td>
+                <td>50</td>
+                <td>NOT NULL</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>email</td>
+                <td>VARCHAR</td>
+                <td>100</td>
+                <td>UNIQUE, NOT NULL</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>userlevel</td>
+                <td>TINYINT</td>
+                <td></td>
+                <td> NOT NULL</td>
+                <td>0(classe), 1(venditore), 2(amministratore)</td>
+            </tr>
+            <tr>
+                <td>classe</td>
+                <td>VARCHAR</td>
+                <td>2</td>
+                <td></td>
+                <td>Classe e sezione</td>
+            </tr>
+            <tr>
+                <td>nome</td>
+                <td>VARCHAR</td>
+                <td>50</td>
+                <td>NOT NULL</td>
+                <td>Nome del venditore o del rappresentante di classe</td>
+            </tr>
+            <tr>
+                <td>cognome</td>
+                <td>VARCHAR</td>
+                <td>50</td>
+                <td>NOT NULL</td>
+                <td>Cognome del venditore o del rappresentante di classe</td>
+            </tr>
+            <tr>
+                <td>citta</td>
+                <td>VARCHAR</td>
+                <td>100</td>
+                <td></td>
+                <td>citta' in cui il venditore lavora</td>
+            </tr>
+        </table>
+
+        <hr />
+
+        <h4>tab_pizze</h4>
+        <table class="table" border="1px">
+            <tr>
+                <th>Nome attributo</th>
+                <th>Tipo</th>
+                <th>Dimensione</th>
+                <th>Vincoli</th>
+                <th>Descrizione</th>
+            </tr>
+            <tr>
+                <td>ID_pizza</td>
+                <td>INT</td>
+                <td></td>
+                <td>PRIMARY KEY</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>nome</td>
+                <td>VARCHAR</td>
+                <td>100</td>
+                <td>NOT NULL</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>prezzo</td>
+                <td>FLOAT</td>
+                <td></td>
+                <td>NOT NULL</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>disponibile</td>
+                <td>TINYINT</td>
+                <td></td>
+                <td>NOT NULL</td>
+                <td>1(disponibile) oppure 0(non disponibile)</td>
+            </tr>
+            <tr>
+                <td>id_venditore</td>
+                <td>INT</td>
+                <td></td>
+                <td>FOREIGN KEY, NOT NULL</td>
+                <td>Reference al venditore(utente) che vende quella pizza</td>
+            </tr>
+            <tr>
+                <td>descrizione</td>
+                <td>VARCHAR</td>
+                <td>200</td>
+                <td></td>
+                <td>Descrizione opzionale della pizza</td>
+            </tr>
+            <tr>
+                <td>foto</td>
+                <td>VARCHAR</td>
+                <td>300</td>
+                <td></td>
+                <td>URL(opzionale) della foto della pizza</td>
+            </tr>
+        </table>
+
+        <hr />
+
+        <h4>tab_quantita_ordinate</h4>
+        <table class="table" border="1px">
+            <tr>
+                <th>Nome attributo</th>
+                <th>Tipo</th>
+                <th>Dimensione</th>
+                <th>Vincoli</th>
+                <th>Descrizione</th>
+            </tr>
+            <tr>
+                <td>id_ordine</td>
+                <td>INT</td>
+                <td></td>
+                <td>PRIMARY KEY, FOREIGN KEY</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>id_classe</td>
+                <td>INT</td>
+                <td></td>
+                <td>PRIMARY KEY, FOREIGN KEY</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>id_pizza</td>
+                <td>INT</td>
+                <td></td>
+                <td>PRIMARY KEY, FOREIGN KEY</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>quantita</td>
+                <td>INT</td>
+                <td></td>
+                <td>NOT NULL</td>
+                <td></td>
+            </tr>
+        </table>
+
+        <hr />
+
+        <h4>tab_ordini</h4>
+        <table class="table" border="1px">
+            <tr>
+                <th>Nome attributo</th>
+                <th>Tipo</th>
+                <th>Dimensione</th>
+                <th>Vincoli</th>
+                <th>Descrizione</th>
+            </tr>
+            <tr>
+                <td>ID_ordine</td>
+                <td>INT</td>
+                <td></td>
+                <td>PRIMARY KEY</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>data_effettuato</td>
+                <td>DATETIME</td>
+                <td></td>
+                <td>NOT NULL</td>
+                <td>Data in cui l'ordine è stato effettuato</td>
+            </tr>
+            <tr>
+                <td>data_consegna</td>
+                <td>DATETIME</td>
+                <td></td>
+                <td>NOT NULL</td>
+                <td>Data in cui l'ordine deve essere consegnato</td>
+            </tr>
+            <tr>
+                <td>stato</td>
+                <td>VARCHAR</td>
+                <td>100</td>
+                <td>NOT NULL</td>
+                <td>Stato dell'ordine</td>
+            </tr>
+        </table>
+
+        <hr />
+
+        <h4>tab_valutazioni</h4>
+        <table class="table" border="1px">
+            <tr>
+                <th>Nome attributo</th>
+                <th>Tipo</th>
+                <th>Dimensione</th>
+                <th>Vincoli</th>
+                <th>Descrizione</th>
+            </tr>
+            <tr>
+                <td>id_pizza</td>
+                <td>INT</td>
+                <td></td>
+                <td>PRIMARY KEY, FOREIGN KEY</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>id_classe</td>
+                <td>INT</td>
+                <td></td>
+                <td>PRIMARY KEY, FOREIGN KEY</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>voto</td>
+                <td>TINYINT</td>
+                <td></td>
+                <td>NOT NULL</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>commento</td>
+                <td>VARCHAR</td>
+                <td>500</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </body>
+</html>

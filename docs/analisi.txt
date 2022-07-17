@@ -1,0 +1,77 @@
+----APPizza: ANALISI DELLA STRUTTURA DEL DATABASE----
+
+Il database dell'applicazione utilizza il modello relazionale,
+implementato con il DBMS MySQL.
+
+
+
+----FASE 1: LE ENTITA' PRINCIPALI----
+
+Si devono registrare informazioni riguardanti:
+-Classi che ordinano le pizze;
+-Pizze che devono essere ordinate;
+-Venditori che ricevono l'ordine;
+-Ordini effettuati.
+
+Di ogni classe ci interessa registrare:
+-Un identificativo univoco(ID_classe);
+-Di che classe si tratta(classe, sezione);
+-Eventualmente le informazioni dello studente addetto alla pizza per ogni classe(nome_addetto, cognome_addetto);
+
+Di ogni pizza ci interessa registrare:
+-Un identificativo univoco(ID_pizza);
+-Il nome della pizza(nome);
+-Il prezzo(prezzo);
+-Un flag che indica se la pizza è disponibile(disponibile);
+-Dato che venditori diversi possono vendere la stessa pizza a prezzi diversi, occorre aggiungere un riferimento al venditore(id_venditore);
+
+Di ogni venditore ci interessa registrare:
+-Un identificativo univoco(ID_venditore);
+-Il nome del venditore(nome, cognome);
+-Eventualmente la località in cui si trova la sua pizzeria(citta);
+
+Riguardo gli ordini, occorre considerare il fatto che una classe può ordinare più pizze, ma anche che ogni pizza può essere ordinata da più classi.
+La soluzione da me adottata prevede la creazione di un'altra entità, "quantita_ordinate", in cui vengono registrati:
+-L'ordine di riferimento(id_ordine);
+-La pizza ordinata(id_pizza);
+-La classe che ha effettuato l'ordine(id_classe);
+-Il numero di pizze ordinate(quantita);
+
+A questo punto definiamo anche le informazioni da registrare riguardanti gli ordini:
+-Un identificativo univoco(ID_ordine);
+-La data in cui l'ordine è stato effettuato(data_effettuato);
+-La data in cui l'ordine deve essere consegnato(data_consegna);
+
+
+
+
+----FASE 2: GLI UTENTI----
+
+Dato che l'applicativo web richiederà l'autenticazione per effettuare gli ordini(da parte degli studenti) e per aggiungere/modificare/eliminare le informazioni riguardanti le pizze(da parte dei venditori), si devono anche registrare informazioni riguardanti:
+-Utenti dell'applicazione.
+
+Di ogni utente ci interessa registrare:
+-Un identificativo univoco(ID_utente);
+-Il nome(username);
+-La password(password);
+-L'email(email);
+-Un flag per indicare se si tratta di uno studente, di un venditore o di un amministratore del sistema(level).
+
+
+
+
+----FASE 3: LE VALUTAZIONI----
+
+L'applicazione deve inoltre rendere possibile valutare la qualità delle pizze da parte delle classi dell'istituto.
+
+Di ogni valutazione ci interessa registrare:
+-La pizza che è stata valutata(id_pizza);
+-La classe che ha effettuato la valutazione(id_classe);
+-La valutazione in sè(valutazione).
+
+
+
+
+<< SCELTE IMPLEMENTATIVE >>
+
+a)Ho deciso di unire le entità "classi" e "venditori" all'interno di "utenti".

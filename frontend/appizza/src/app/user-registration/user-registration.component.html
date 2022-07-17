@@ -1,0 +1,6 @@
+<app-registration-log 
+    *ngIf="signupResult" 
+    [result]="signupResult"></app-registration-log>
+<app-registration-form 
+    (mySubmit)="onRegisterUser($event)"></app-registration-form>
+

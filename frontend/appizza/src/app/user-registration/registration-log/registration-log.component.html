@@ -1,0 +1,8 @@
+<div>
+  <div *ngIf="display.success" class="alert alert-success">
+    <label>Registrazione effettuata con successo!</label>
+  </div>
+  <div *ngIf="display.error" class="alert alert-danger"> 
+    <label>Errore:</label> {{ display.error }}
+  </div>
+</div>
