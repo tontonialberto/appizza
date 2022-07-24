@@ -71,21 +71,23 @@
             $_POST["cognome"],
             $_POST["citta"]);
 
-        if(!$stmt_insert_user) 
+        if(!$stmt_insert_user) {
             $api_result["error"] = "Statement error in binding params: ".$mysqli->error;
-        else 
-        {
-            try {
-                $result_insert_user = $stmt_insert_user->execute();
-                $api_result["success"] = true;
-                $api_result["error"] = NULL;
-            }
-            catch(Exception $e) {
-                $api_result["error"] = "Statement execute error: ".$e->getMessage();
-            }
-            $stmt_insert_user->close();
+            $error_happened = true;
         }
-    } 
+    }
+
+    if(!$error_happened) {
+        try {
+            $result_insert_user = $stmt_insert_user->execute();
+            $api_result["success"] = true;
+            $api_result["error"] = NULL;
+        }
+        catch(Exception $e) {
+            $api_result["error"] = "Statement execute error: ".$e->getMessage();
+        }
+        $stmt_insert_user->close();
+    }
         
     if(null !== $mysqli) {
         $mysqli->close();
