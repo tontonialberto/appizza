@@ -1,6 +1,7 @@
 <?php
-    require "../config/db_config.php";
-    require "../lib/jwt_helper.php";
+    require __DIR__."/../config/db_config.php";
+    require __DIR__."/../lib/jwt_helper.php";
+    require __DIR__."/../config/jwt_config.php";
 	
     header("Access-Control-Allow-Origin: *");
     
