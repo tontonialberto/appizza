@@ -64,13 +64,13 @@
                         $api_result["error"] = "Statement error in binding params: ".$mysqli->error;
                     else 
                     {
-                        $result_insert_user = $stmt_insert_user->execute();
-
-                        if(!$result_insert_user) $api_result["error"] = "Statement execute error: ".$stmt_insert_user->error;
-                        else
-                        {
+                        try {
+                            $result_insert_user = $stmt_insert_user->execute();
                             $api_result["success"] = true;
                             $api_result["error"] = NULL;
+                        }
+                        catch(Exception $e) {
+                            $api_result["error"] = "Statement execute error: ".$e->getMessage();
                         }
                         $stmt_insert_user->close();
                     }
