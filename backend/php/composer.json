@@ -1,0 +1,11 @@
+{
+    "name": "tontonialberto/appizza-rest-api",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Alberto Tontoni",
+            "email": "tontonialberto@outlook.it"
+        }
+    ],
+    "require": {}
+}
