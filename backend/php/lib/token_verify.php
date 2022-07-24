@@ -1,10 +1,12 @@
 <?php
-    include "jwt_helper.php";
-    include "/php/config/jwt_config.php";
-    include "./php/config/db_config.php";
+    require_once "jwt_helper.php";
+    require_once __DIR__."/../config/jwt_config.php";
+    require_once __DIR__."/../config/db_config.php";
 
     function token_verify($token)
     {
+        global $jwt_server_key;
+        
         // Questo array associativo verrà restituito come risultato della funzione.
         // success(boolean) = l'autenticazione ha avuto successo
         // error(string) = la stringa contenente la causa dell'errore
