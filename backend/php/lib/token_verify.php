@@ -5,7 +5,7 @@
 
     function token_verify($token)
     {
-        global $jwt_server_key;
+        global $jwt_server_key, $db_name, $db_server, $db_username, $db_password;
 
         // Questo array associativo verrà restituito come risultato della funzione.
         // success(boolean) = l'autenticazione ha avuto successo
@@ -40,7 +40,7 @@
             // delle credenziali all'interno del database
             if($user_data !== null)
             {
-                $mysqli = new mysqli("localhost", "appizza", "amatriciana", "my_appizza");
+                $mysqli = new mysqli($db_server, $db_username, $db_password, $db_name);
 
                 if($mysqli->connect_error)
                 {
