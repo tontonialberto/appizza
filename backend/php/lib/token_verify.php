@@ -6,7 +6,7 @@
     function token_verify($token)
     {
         global $jwt_server_key;
-        
+
         // Questo array associativo verrà restituito come risultato della funzione.
         // success(boolean) = l'autenticazione ha avuto successo
         // error(string) = la stringa contenente la causa dell'errore
@@ -22,17 +22,23 @@
 
         if(isset($token))
         {
-            // Decodifica il token utilizzando la chiave privata del server.
-            $user_data = JWT::decode($token, $jwt_server_key);
-            // var_dump($user_data);
-
-            // A questo punto, se il token non è valido, lo script va in errore
-            // causando un'eccezione di tipo Fatal Error.
-            // Se il token è valido, $user_data conterrà un oggetto stdClass.
+            $user_data = null;
+            try {
+                // Decodifica il token utilizzando la chiave privata del server.
+                $user_data = JWT::decode($token, $jwt_server_key);
+                // var_dump($user_data);
+    
+                // A questo punto, se il token non è valido, lo script va in errore
+                // causando un'eccezione di tipo Fatal Error.
+                // Se il token è valido, $user_data conterrà un oggetto stdClass.
+            }
+            catch(UnexpectedValueException $e) {
+                $api_result["error"] = "Function token_verify() -> ".$e->getMessage();
+            }
 
             // Nel caso in cui il token sia valido, procede con la verifica
             // delle credenziali all'interno del database
-            if(is_object($user_data))
+            if($user_data !== null)
             {
                 $mysqli = new mysqli("localhost", "appizza", "amatriciana", "my_appizza");
 
@@ -100,8 +106,8 @@
                         }
                     }
                 }
+                $mysqli->close();
             }
-            $mysqli->close();
         }
 
     return $api_result;

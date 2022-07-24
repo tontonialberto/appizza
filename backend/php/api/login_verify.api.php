@@ -65,6 +65,7 @@
                                     "userlevel" => $userlevel
                                 );
 
+                                global $jwt_server_key;
                                 $token = JWT::encode($userData, $jwt_server_key);
 
                                 $api_result["success"] = true;

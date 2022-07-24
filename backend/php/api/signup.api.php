@@ -76,8 +76,8 @@
                     }
                 } 
             }
+            $mysqli->close();
         }
-        $mysqli->close();
     }
 
     echo json_encode($api_result);
