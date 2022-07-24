@@ -44,16 +44,22 @@
                 }
                 else
                 {
-                    $stmt_delete_user->bind_param("ss", $_POST["username"]);
-                    
-                    if(!$stmt_delete_user)
+                    if(!$stmt_delete_user->bind_param("s", $_POST["usernameToDelete"]))
                     {
                         $api_result["error"] = "Statement error in binding params: ".$mysqli->error;
                     }
                     else
                     {
-                        $api_result["success"] = true;
-                        $api_result["error"] = false;
+                        if(!$stmt_delete_user->execute()) {
+                            $api_result["error"] = "Statement execution error: ".$mysqli->error;
+                        }
+                        else if(0 === $stmt_delete_user->affected_rows) {
+                            $api_result["error"] = "User does not exist";
+                        } 
+                        else {
+                            $api_result["success"] = true;
+                            $api_result["error"] = false;
+                        }
                     }
                     $stmt_delete_user->close();
                 }
