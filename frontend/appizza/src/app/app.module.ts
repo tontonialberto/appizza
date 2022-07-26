@@ -23,6 +23,7 @@ import { PizzaDetailComponent } from './pizzas-list/pizza-detail/pizza-detail.co
 import { PizzaInsertComponent } from './pizza-insert/pizza-insert.component';
 import { PizzaInsertFormComponent } from './pizza-insert/pizza-insert-form/pizza-insert-form.component';
 import { StoreModule } from '@ngrx/store';
+import { appReducer } from './app.reducer';
 
 const appRoutes: Routes = [
   { path: "signin", component: LoginComponent },
@@ -56,7 +57,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     ReactiveFormsModule,
     HttpClientModule,
-    StoreModule.forRoot({}, {})
+    StoreModule.forRoot({app: appReducer}, {})
   ],
   providers: [
     UserService,

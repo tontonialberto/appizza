@@ -1,18 +1,18 @@
 <div class="row list-group">
-  <div class="item col-xs-4 col-lg-4">
+  <div class="item col-xs-4 col-lg-4" *ngFor="let pizza of (pizzasObs | async)">
     <div class="thumbnail">
-      <img class="group list-group-image" src="" alt="Immagine non disponibile" />
+      <img class="group list-group-image" [src]="pizza.imagePath" alt="Immagine non disponibile" />
       <div class="caption">
         <h4 class="group inner list-group-item-heading">
-          Nome Pizza
+          {{ pizza.name }}
         </h4>
         <p class="group inner list-group-item-text">
-          Descrizione prodotto...
+          {{ pizza.description }}
         </p>
         <div class="row">
           <div class="col-xs-12 col-md-6">
             <p class="lead">
-              € 0.80
+              € {{ pizza.price }}
             </p>
           </div>
           <div class="col-xs-12 col-md-6">
