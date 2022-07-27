@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { map, Observable } from 'rxjs';
+import { AppState } from '../app.reducer';
 import { Pizza } from '../_models/pizza.model';
 
 @Component({
@@ -13,7 +14,7 @@ export class PizzasListComponent implements OnInit {
 
   pizzasObs: Observable<Pizza[]>;
 
-  constructor(private store: Store<{ app: { pizzas: [] } }>) { }
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
     this.pizzasObs = this.store.select('app')
