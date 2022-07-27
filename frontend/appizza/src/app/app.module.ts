@@ -18,19 +18,20 @@ import { UserService } from "./_services/user.service";
 import { LoginService } from "./_services/login.service";
 import { SignupService } from "./_services/signup.service";
 import { AuthGuard } from "./_guards/auth.guard";
-import { PizzasListComponent } from './pizzas-list/pizzas-list.component';
-import { PizzaDetailComponent } from './pizzas-list/pizza-detail/pizza-detail.component';
+import { PizzasMenuComponent } from './pizzas-menu/pizzas-menu.component';
+import { PizzaDetailComponent } from './pizzas-menu/pizza-detail/pizza-detail.component';
 import { PizzaInsertComponent } from './pizza-insert/pizza-insert.component';
 import { PizzaInsertFormComponent } from './pizza-insert/pizza-insert-form/pizza-insert-form.component';
 import { StoreModule } from '@ngrx/store';
 import { appReducer } from './app.reducer';
+import { ProductCatalogComponent } from './product-catalog/product-catalog.component';
 
 const appRoutes: Routes = [
   { path: "signin", component: LoginComponent },
   { path: "signup", component: UserRegistrationComponent },
   { path: "users", component: UsersListComponent },
   { path: "users/:username", component: UserDetailComponent },
-  { path: "pizzas", component: PizzasListComponent },
+  { path: "pizzas", component: PizzasMenuComponent },
   { path: "newpizza", component: PizzaInsertComponent }
 ];
 
@@ -46,10 +47,11 @@ const appRoutes: Routes = [
     LoginComponent,
     LoginFormComponent,
     RegistrationLogComponent,
-    PizzasListComponent,
+    PizzasMenuComponent,
     PizzaDetailComponent,
     PizzaInsertComponent,
-    PizzaInsertFormComponent
+    PizzaInsertFormComponent,
+    ProductCatalogComponent
   ],
   imports: [
     BrowserModule,
