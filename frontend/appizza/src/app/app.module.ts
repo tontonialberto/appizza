@@ -21,8 +21,7 @@ import { SignupService } from "./_services/signup.service";
 import { AuthGuard } from "./_guards/auth.guard";
 import { PizzasMenuComponent } from './pizzas-menu/pizzas-menu.component';
 import { PizzaDetailComponent } from './pizzas-menu/pizza-detail/pizza-detail.component';
-import { PizzaInsertComponent } from './pizza-insert/pizza-insert.component';
-import { ProductEditComponent } from './pizza-insert/product-edit/product-edit.component';
+import { ProductEditComponent } from './product-catalog/product-edit/product-edit.component';
 import { appReducer } from './app.reducer';
 import { ProductCatalogComponent } from './product-catalog/product-catalog.component';
 
@@ -32,7 +31,7 @@ const appRoutes: Routes = [
   { path: "users", component: UsersListComponent },
   { path: "users/:username", component: UserDetailComponent },
   { path: "pizzas", component: PizzasMenuComponent },
-  { path: "newpizza", component: PizzaInsertComponent },
+  { path: "newpizza", component: ProductEditComponent },
   { path: 'seller', component: ProductCatalogComponent }
 ];
 
@@ -50,7 +49,6 @@ const appRoutes: Routes = [
     RegistrationLogComponent,
     PizzasMenuComponent,
     PizzaDetailComponent,
-    PizzaInsertComponent,
     ProductEditComponent,
     ProductCatalogComponent
   ],
