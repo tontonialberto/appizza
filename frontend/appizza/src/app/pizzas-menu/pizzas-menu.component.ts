@@ -5,10 +5,10 @@ import { AppState } from '../app.reducer';
 import { Pizza } from '../_models/pizza.model';
 
 @Component({
-  selector: 'app-pizzas-list',
-  templateUrl: './pizzas-list.component.html'
+  selector: 'app-pizzas-menu',
+  templateUrl: './pizzas-menu.component.html'
 })
-export class PizzasListComponent implements OnInit {
+export class PizzasMenuComponent implements OnInit {
 
   pizzas: Pizza[] = [];
 
