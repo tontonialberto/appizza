@@ -16,7 +16,7 @@ const initialState: State = {
 
 export const appReducer = createReducer(
     initialState,
-    on(createPizza, (state: State, { pizza }) => {
+    on(createPizza, (state: State, pizza: Pizza) => {
         return {
             ...state,
             pizzas: [ ...state.pizzas, pizza ]

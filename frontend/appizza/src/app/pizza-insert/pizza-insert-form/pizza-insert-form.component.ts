@@ -24,7 +24,7 @@ export class PizzaInsertFormComponent implements OnInit {
       form.value.description,
       form.value.imagePath
     );
-    this.store.dispatch(addPizza({ pizza: pizza }));
+    this.store.dispatch(addPizza(pizza));
   }
 
 }
