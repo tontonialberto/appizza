@@ -18,5 +18,9 @@ export const LINKS = [
     {
         path: "/newpizza",
         text: "Aggiungi una Pizza"
+    },
+    {
+        path: '/seller',
+        text: 'Catalogo Prodotti'
     }
 ];

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -22,7 +23,6 @@ import { PizzasMenuComponent } from './pizzas-menu/pizzas-menu.component';
 import { PizzaDetailComponent } from './pizzas-menu/pizza-detail/pizza-detail.component';
 import { PizzaInsertComponent } from './pizza-insert/pizza-insert.component';
 import { PizzaInsertFormComponent } from './pizza-insert/pizza-insert-form/pizza-insert-form.component';
-import { StoreModule } from '@ngrx/store';
 import { appReducer } from './app.reducer';
 import { ProductCatalogComponent } from './product-catalog/product-catalog.component';
 
@@ -32,7 +32,8 @@ const appRoutes: Routes = [
   { path: "users", component: UsersListComponent },
   { path: "users/:username", component: UserDetailComponent },
   { path: "pizzas", component: PizzasMenuComponent },
-  { path: "newpizza", component: PizzaInsertComponent }
+  { path: "newpizza", component: PizzaInsertComponent },
+  { path: 'seller', component: ProductCatalogComponent }
 ];
 
 @NgModule({

@@ -1,1 +1,21 @@
-<p>product-catalog works!</p>
+<div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let pizza of (pizzas$ | async)">
+        <div class="thumbnail">
+        <img [src]="(!!pizza.imagePath && pizza.imagePath !== '') ? pizza.imagePath : 'https://fornocannata.com/img/p/it-default-home_default.jpg'" alt="">
+            <div class="caption">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h3>{{ pizza.name }}</h3>
+                        <h4>{{ pizza.price | currency:'EUR' }}</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <a class="btn btn-default btn-block">Modifica</a>
+                        <a class="btn btn-danger btn-block ">Elimina</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
