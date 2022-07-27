@@ -31,8 +31,8 @@ const appRoutes: Routes = [
   { path: "users", component: UsersListComponent },
   { path: "users/:username", component: UserDetailComponent },
   { path: "pizzas", component: PizzasMenuComponent },
-  { path: "newpizza", component: ProductEditComponent },
-  { path: 'seller', component: ProductCatalogComponent }
+  { path: 'seller', component: ProductCatalogComponent },
+  { path: "seller/newpizza", component: ProductEditComponent },
 ];
 
 @NgModule({
