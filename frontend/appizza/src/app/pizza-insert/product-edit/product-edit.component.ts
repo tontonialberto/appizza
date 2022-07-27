@@ -6,10 +6,10 @@ import { AppState } from 'src/app/app.reducer';
 import { Pizza } from 'src/app/_models/pizza.model';
 
 @Component({
-  selector: 'app-pizza-insert-form',
-  templateUrl: './pizza-insert-form.component.html'
+  selector: 'app-product-edit',
+  templateUrl: './product-edit.component.html'
 })
-export class PizzaInsertFormComponent implements OnInit {
+export class ProductEditComponent implements OnInit {
 
   constructor(private store: Store<AppState>) { }
 

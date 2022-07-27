@@ -22,7 +22,7 @@ import { AuthGuard } from "./_guards/auth.guard";
 import { PizzasMenuComponent } from './pizzas-menu/pizzas-menu.component';
 import { PizzaDetailComponent } from './pizzas-menu/pizza-detail/pizza-detail.component';
 import { PizzaInsertComponent } from './pizza-insert/pizza-insert.component';
-import { PizzaInsertFormComponent } from './pizza-insert/pizza-insert-form/pizza-insert-form.component';
+import { ProductEditComponent } from './pizza-insert/product-edit/product-edit.component';
 import { appReducer } from './app.reducer';
 import { ProductCatalogComponent } from './product-catalog/product-catalog.component';
 
@@ -51,7 +51,7 @@ const appRoutes: Routes = [
     PizzasMenuComponent,
     PizzaDetailComponent,
     PizzaInsertComponent,
-    PizzaInsertFormComponent,
+    ProductEditComponent,
     ProductCatalogComponent
   ],
   imports: [
