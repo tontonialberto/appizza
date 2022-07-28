@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
-import { createPizza as createPizza, endUpdatingPizza, startUpdatingPizza as startUpdatingPizza, updatePizza } from "./app.actions";
+import { createPizza as createPizza, deletePizza, endUpdatingPizza, startUpdatingPizza as startUpdatingPizza, updatePizza } from "./app.actions";
 import { Pizza } from "./_models/pizza.model";
 
 export interface State {
@@ -21,13 +21,13 @@ export const appReducer = createReducer(
     on(createPizza, (state: State, pizza: Pizza) => {
         return {
             ...state,
-            pizzas: [ ...state.pizzas, pizza ]
+            pizzas: [...state.pizzas, pizza]
         };
     }),
     on(startUpdatingPizza, (state: State, props: { id: number }) => {
         const selectedPizza: Pizza = state.pizzas.find(p => props.id === p.id);
 
-        if(selectedPizza !== undefined) {
+        if (selectedPizza !== undefined) {
             return {
                 ...state,
                 currentUpdatingPizza: { ...selectedPizza }
@@ -55,5 +55,19 @@ export const appReducer = createReducer(
             ...state,
             pizzas: updatedPizzas
         };
+    }),
+    on(deletePizza, (state: State, props: { id: number }) => {
+        const pizzaToBeDeleted = state.pizzas.find(p => p.id === props.id);
+        if(pizzaToBeDeleted !== undefined) {
+            return {
+                ...state,
+                pizzas: state.pizzas.filter(p => p.id !== props.id)
+            }
+        }
+        else {
+            return {
+                ...state
+            };
+        }
     })
 );

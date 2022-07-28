@@ -1,12 +1,10 @@
 <div class="row">
-  <div class="col-xs-12 col-md-4">
-    <div>
-      <div class="thumbnail" *ngFor="let pizza of (pizzasObs | async)">
+  <div class="col-xs-12 col-md-4" *ngFor="let pizza of (pizzasObs | async)">
+      <div class="thumbnail">
         <img
           [src]="(!!pizza.imagePath && pizza.imagePath !== '') ? pizza.imagePath : 'https://fornocannata.com/img/p/it-default-home_default.jpg'"
           alt="">
         <div class="caption">
-
           <h3>
             {{ pizza.name }}
           </h3>
@@ -41,6 +39,5 @@
           </div>
         </div>
       </div>
-    </div>
   </div>
 </div>

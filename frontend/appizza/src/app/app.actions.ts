@@ -8,3 +8,5 @@ export const startUpdatingPizza = createAction('START_UPDATING_PIZZA', props<{id
 export const endUpdatingPizza = createAction('END_UPDATING_PIZZA');
 
 export const updatePizza = createAction('UPDATE_PIZZA', props<Pizza>());
+
+export const deletePizza = createAction('DELETE_PIZZA', props<{id: number}>());
