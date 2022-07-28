@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { map, Observable } from 'rxjs';
-import { AppState } from '../app.reducer';
+import { AppState, State } from '../app.reducer';
 import { Pizza } from '../_models/pizza.model';
 
 @Component({
@@ -19,7 +19,7 @@ export class PizzasMenuComponent implements OnInit {
   ngOnInit() {
     this.pizzasObs = this.store.select('app')
       .pipe(
-        map((state: { pizzas: [] }) => state.pizzas)
+        map((state: State) => state.pizzas)
       );
     this.pizzasObs.subscribe((pizzas: Pizza[]) => {
       this.pizzas = pizzas;

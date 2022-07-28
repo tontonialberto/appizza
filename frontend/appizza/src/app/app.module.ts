@@ -33,6 +33,7 @@ const appRoutes: Routes = [
   { path: "pizzas", component: PizzasMenuComponent },
   { path: 'seller', component: ProductCatalogComponent },
   { path: "seller/newpizza", component: ProductEditComponent },
+  { path: 'seller/edit/:id', component: ProductEditComponent }
 ];
 
 @NgModule({
