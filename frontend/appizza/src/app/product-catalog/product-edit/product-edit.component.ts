@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { map } from 'rxjs';
 import { AppState } from 'src/app/app.reducer';
 import { Pizza } from 'src/app/_models/pizza.model';
-import { createPizza, endUpdatingPizza, startUpdatingPizza, updatePizza } from '../store/seller.actions';
+import * as fromSeller from '../store/seller.actions';
 
 @Component({
   selector: 'app-product-edit',
@@ -26,7 +26,7 @@ export class ProductEditComponent implements OnInit, OnDestroy, AfterViewInit {
     const pizzaId = +this.route.snapshot.params['id'];
 
     if(!isNaN(pizzaId)) {
-      this.store.dispatch(startUpdatingPizza({ id: pizzaId }));
+      this.store.dispatch(fromSeller.startUpdatingPizza({ id: pizzaId }));
     }
 
     this.store.select('seller', 'currentUpdatingPizza')
@@ -41,7 +41,7 @@ export class ProductEditComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngOnDestroy(): void {
-    this.store.dispatch(endUpdatingPizza());
+    this.store.dispatch(fromSeller.endUpdatingPizza());
   }
 
   ngAfterViewInit(): void {
@@ -58,10 +58,10 @@ export class ProductEditComponent implements OnInit, OnDestroy, AfterViewInit {
     );
     if(this.editMode) {
       pizza.id = this.pizza.id;
-      this.store.dispatch(updatePizza(pizza));
+      this.store.dispatch(fromSeller.updatePizza(pizza));
     }
     else {
-      this.store.dispatch(createPizza(pizza));
+      this.store.dispatch(fromSeller.createPizza(pizza));
     }
   }
 
