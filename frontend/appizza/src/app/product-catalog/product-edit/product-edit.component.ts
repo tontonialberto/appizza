@@ -24,16 +24,12 @@ export class ProductEditComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnInit() {
     const pizzaId = +this.route.snapshot.params['id'];
-    console.log(pizzaId)
 
     if(!isNaN(pizzaId)) {
       this.store.dispatch(startUpdatingPizza({ id: pizzaId }));
     }
 
-    this.store.select('app')
-      .pipe(
-        map((state: State) => state.currentEditingPizza)
-      )
+    this.store.select('app', 'currentUpdatingPizza')
       .subscribe({
         next: (pizza: Pizza) => {
           if(pizza !== null) {

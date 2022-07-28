@@ -4,7 +4,7 @@ import { Pizza } from "./_models/pizza.model";
 
 export interface State {
     pizzas: Pizza[];
-    currentEditingPizza: Pizza | null;
+    currentUpdatingPizza: Pizza | null;
 }
 
 export interface AppState {
@@ -13,7 +13,7 @@ export interface AppState {
 
 const initialState: State = {
     pizzas: [new Pizza('Margherita', 1.5, true, 'Buonissima, come la facciamo noi!', '')],
-    currentEditingPizza: null
+    currentUpdatingPizza: null
 };
 
 export const appReducer = createReducer(
@@ -27,13 +27,13 @@ export const appReducer = createReducer(
     on(startUpdatingPizza, (state: State, props: { id: number }) => {
         return {
             ...state,
-            currentEditingPizza: state.pizzas.find(p => props.id === p.id)
+            currentUpdatingPizza: state.pizzas.find(p => props.id === p.id)
         };
     }),
     on(endUpdatingPizza, (state: State) => {
         return {
             ...state,
-            currentEditingPizza: null
+            currentUpdatingPizza: null
         };
     }),
     on(updatePizza, (state: State, pizza: Pizza) => {
