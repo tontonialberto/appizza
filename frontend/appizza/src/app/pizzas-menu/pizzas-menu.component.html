@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-xs-12 col-md-4" *ngFor="let pizza of (pizzasObs | async)">
+  <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let pizza of (pizzas$ | async)">
       <div class="thumbnail">
         <img
           [src]="(!!pizza.imagePath && pizza.imagePath !== '') ? pizza.imagePath : 'https://fornocannata.com/img/p/it-default-home_default.jpg'"
@@ -20,20 +20,20 @@
               <div class="col-xs-6">
                 <div class="form-group input-group">
                   <div class="input-group-btn">
-                    <button class="btn btn-default">
+                    <a class="btn btn-default">
                       <i class="glyphicon glyphicon-minus"></i>
-                    </button>
+                    </a>
                   </div>
                   <input type="number" class="form-control">
                   <div class="input-group-btn">
-                    <button class="btn btn-default">
+                    <a class="btn btn-default">
                       <i class="glyphicon glyphicon-plus"></i>
-                    </button>
+                    </a>
                   </div>
                 </div>
               </div>
               <div class="col-xs-6">
-                  <button class="btn btn-success btn-block">Ordina</button>
+                  <a class="btn btn-success btn-block">Ordina</a>
               </div>
             </div>
           </div>

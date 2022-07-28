@@ -59,7 +59,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     ReactiveFormsModule,
     HttpClientModule,
-    StoreModule.forRoot({app: appReducer}, {})
+    StoreModule.forRoot(appReducer, {})
   ],
   providers: [
     UserService,

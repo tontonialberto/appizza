@@ -3,9 +3,9 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { map } from 'rxjs';
-import { createPizza, endUpdatingPizza, startUpdatingPizza, updatePizza } from 'src/app/app.actions';
-import { AppState, State } from 'src/app/app.reducer';
+import { AppState } from 'src/app/app.reducer';
 import { Pizza } from 'src/app/_models/pizza.model';
+import { createPizza, endUpdatingPizza, startUpdatingPizza, updatePizza } from '../store/seller.actions';
 
 @Component({
   selector: 'app-product-edit',
@@ -29,7 +29,7 @@ export class ProductEditComponent implements OnInit, OnDestroy, AfterViewInit {
       this.store.dispatch(startUpdatingPizza({ id: pizzaId }));
     }
 
-    this.store.select('app', 'currentUpdatingPizza')
+    this.store.select('seller', 'currentUpdatingPizza')
       .subscribe({
         next: (pizza: Pizza) => {
           if(pizza !== null) {
