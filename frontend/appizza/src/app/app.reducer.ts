@@ -25,10 +25,20 @@ export const appReducer = createReducer(
         };
     }),
     on(startUpdatingPizza, (state: State, props: { id: number }) => {
-        return {
-            ...state,
-            currentUpdatingPizza: state.pizzas.find(p => props.id === p.id)
-        };
+        const selectedPizza: Pizza = state.pizzas.find(p => props.id === p.id);
+
+        if(selectedPizza !== undefined) {
+            return {
+                ...state,
+                currentUpdatingPizza: { ...selectedPizza }
+            };
+        }
+        else {
+            return {
+                ...state,
+                currentUpdatingPizza: null
+            }
+        }
     }),
     on(endUpdatingPizza, (state: State) => {
         return {
