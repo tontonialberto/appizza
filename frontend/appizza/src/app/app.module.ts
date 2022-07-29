@@ -7,14 +7,11 @@ import { StoreModule } from '@ngrx/store';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { UserRegistrationComponent } from "./user-registration/user-registration.component";
-import { RegistrationFormComponent } from "./user-registration/registration-form/registration-form.component";
 import { UserProfileComponent } from './user-profile/user-profile.component';
-import { UsersListComponent } from './users-list/users-list.component';
-import { UserDetailComponent } from './users-list/user-detail/user-detail.component';
+import { UsersListComponent } from './admin-panel/users-list/users-list.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 import { LoginComponent } from './login/login.component';
 import { LoginFormComponent } from './login/login-form/login-form.component';
-import { RegistrationLogComponent } from './user-registration/registration-log/registration-log.component';
 import { UserService } from "./_services/user.service";
 import { LoginService } from "./_services/login.service";
 import { SignupService } from "./_services/signup.service";
@@ -24,6 +21,9 @@ import { PizzaDetailComponent } from './pizzas-menu/pizza-detail/pizza-detail.co
 import { ProductEditComponent } from './product-catalog/product-edit/product-edit.component';
 import { appReducer } from './app.reducer';
 import { ProductCatalogComponent } from './product-catalog/product-catalog.component';
+import { UserRegistrationComponent } from './admin-panel/user-registration/user-registration.component';
+import { RegistrationFormComponent } from './admin-panel/user-registration/registration-form/registration-form.component';
+import { RegistrationLogComponent } from './admin-panel/user-registration/registration-log/registration-log.component';
 
 const appRoutes: Routes = [
   { path: "signin", component: LoginComponent },
