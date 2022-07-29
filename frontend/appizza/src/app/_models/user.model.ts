@@ -7,5 +7,6 @@ export class User {
                 public classe: string, 
                 public nome: string, 
                 public cognome: string, 
-                public citta: string) {}
+                public citta: string) {
+                }
 }

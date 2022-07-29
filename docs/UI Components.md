@@ -20,3 +20,4 @@
   - Users List
   - User Edit
   - User Create
+  - User Detail: has 'Edit' and 'Delete' buttons.

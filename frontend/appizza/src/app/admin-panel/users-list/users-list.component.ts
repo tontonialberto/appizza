@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { AppState } from 'src/app/app.reducer';
 
 import { User } from '../../_models/user.model';
 import { UserService } from '../../_services/user.service';
@@ -11,21 +14,15 @@ import { UserService } from '../../_services/user.service';
 export class UsersListComponent implements OnInit {
   users: Array<User> = [];
 
-  constructor(private userService: UserService) {}
+  users$: Observable<User[]>;
+
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit() {
-    this.getUsers();
+    this.users$ = this.store.select('admin', 'users');
   }
 
   getUsers() {
-    this.userService.getUsers()
-      .subscribe(
-        (users) => {
-          this.users = users;
-          //console.log(this.users);
-        },
-        (error) => console.log("Errore: " + error)
-      );
   }
 
 }
