@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 import { User } from "src/app/_models/user.model"
-import { selectUser } from "./admin.actions";
+import { createUser, selectUser } from "./admin.actions";
 
 export interface State {
     users: User[];
@@ -30,5 +30,11 @@ export const adminReducer = createReducer(
                 selectedUser: null
             };
         }
+    }),
+    on(createUser, (state, user: User) => {
+        return {
+            ...state,
+            users: [ ...state.users, user ]
+        };
     })
 );

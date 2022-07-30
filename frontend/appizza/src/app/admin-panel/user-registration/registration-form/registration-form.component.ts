@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { FormGroup, FormBuilder, Validators, FormControl } from "@angular/forms";
 
 import { User } from 'src/app/_models/user.model';
 
@@ -20,14 +20,14 @@ export class RegistrationFormComponent implements OnInit {
 
   buildForm() {
     this.registrationForm = this.fb.group({
-      "username": [this.user.username, Validators.required],
-      "password": [this.user.password, Validators.required],
-      "email": [this.user.email, Validators.required],
-      "userlevel": [this.user.userlevel, Validators.required],
-      "classe": [this.user.classe],
-      "nome": [this.user.nome, Validators.required],
-      "cognome": [this.user.cognome, Validators.required],
-      "citta": [this.user.citta]
+      "username": new FormControl(this.user.username, [Validators.required]),
+      "password": new FormControl(this.user.password, [Validators.required, Validators.minLength(6)]),
+      "email": new FormControl(this.user.email, [Validators.required, Validators.email]),
+      "userlevel": new FormControl(this.user.userlevel, [Validators.required]),
+      "classe": new FormControl(this.user.classe),
+      "nome": new FormControl(this.user.nome, [Validators.required]),
+      "cognome": new FormControl(this.user.cognome, [Validators.required]),
+      "citta": new FormControl(this.user.citta)
     });
   }
   
