@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let pizza of (pizzas$ | async)">
+  <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let pizza of pizzas">
       <div class="thumbnail">
         <img
           [src]="(!!pizza.imagePath && pizza.imagePath !== '') ? pizza.imagePath : 'https://fornocannata.com/img/p/it-default-home_default.jpg'"
@@ -17,24 +17,26 @@
             </p>
             <label>Quantità:</label>
             <div class="row">
-              <div class="col-xs-6">
-                <div class="form-group input-group">
-                  <div class="input-group-btn">
-                    <a class="btn btn-default">
-                      <i class="glyphicon glyphicon-minus"></i>
-                    </a>
-                  </div>
-                  <input type="number" class="form-control">
-                  <div class="input-group-btn">
-                    <a class="btn btn-default">
-                      <i class="glyphicon glyphicon-plus"></i>
-                    </a>
+              <form #form="ngForm" (ngSubmit)="onSubmit(pizza.id, form)">
+                <div class="col-xs-6">
+                  <div class="form-group input-group">
+                    <div class="input-group-btn">
+                      <a class="btn btn-default" (click)="onDecreaseQuantity(pizza.id)">
+                        <i class="glyphicon glyphicon-minus"></i>
+                      </a>
+                    </div>
+                    <input type="number" class="form-control" [(ngModel)]="getQuantityItem(pizza.id).quantity" name="quantity" required min="1">
+                    <div class="input-group-btn">
+                      <a class="btn btn-default" (click)="onIncreaseQuantity(pizza.id)">
+                        <i class="glyphicon glyphicon-plus"></i>
+                      </a>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="col-xs-6">
-                  <a class="btn btn-success btn-block">Ordina</a>
-              </div>
+                <div class="col-xs-6">
+                    <button type="submit" class="btn btn-success btn-block" [disabled]="form.invalid">Ordina</button>
+                </div>
+              </form>
             </div>
           </div>
         </div>

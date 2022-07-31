@@ -24,6 +24,7 @@ import { ProductCatalogComponent } from './product-catalog/product-catalog.compo
 import { UserRegistrationComponent } from './admin-panel/user-registration/user-registration.component';
 import { RegistrationFormComponent } from './admin-panel/user-registration/registration-form/registration-form.component';
 import { RegistrationLogComponent } from './admin-panel/user-registration/registration-log/registration-log.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 const appRoutes: Routes = [
   { path: "signin", component: LoginComponent },
@@ -51,7 +52,8 @@ const appRoutes: Routes = [
     PizzasMenuComponent,
     PizzaDetailComponent,
     ProductEditComponent,
-    ProductCatalogComponent
+    ProductCatalogComponent,
+    ShoppingCartComponent
   ],
   imports: [
     BrowserModule,
