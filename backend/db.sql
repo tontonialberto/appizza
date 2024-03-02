@@ -1,7 +1,7 @@
 CREATE TABLE tab_utenti (
     ID_utente INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) UNIQUE NOT NULL,
-    password VARCHAR(50) NOT NULL,
+    password VARCHAR(255) NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
     userlevel TINYINT NOT NULL,
     classe VARCHAR(2),
@@ -48,3 +48,6 @@ CREATE TABLE tab_quantita_ordinate (
     FOREIGN KEY(id_classe) REFERENCES tab_utenti(ID_utente),
     FOREIGN KEY(id_ordine) REFERENCES tab_ordini(ID_ordine)
 );
+
+INSERT INTO tab_utenti (username, password, email, userlevel, classe, nome, cognome, citta)
+VALUES ('admin', '$2y$10$XEs7LhU3BmVB/gpHKrRnleRTyt400KGoB29UIKowHob8yWeIW138G', 'info@appizza.it', 0, NULL, 'admin', 'admin', NULL);

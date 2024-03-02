@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:5.7
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: $APPIZZA_DB_ROOT_PASSWORD
+      MYSQL_DATABASE: $APPIZZA_DB_NAME
+      MYSQL_USER: $APPIZZA_DB_USERNAME
+      MYSQL_PASSWORD: $APPIZZA_DB_PASSWORD
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./db.sql:/docker-entrypoint-initdb.d/db.sql    
+
+  api:
+    build: .
+    environment:
+      APPIZZA_DB_NAME: $APPIZZA_DB_NAME
+      APPIZZA_DB_URL: $APPIZZA_DB_URL
+      APPIZZA_DB_USERNAME: $APPIZZA_DB_USERNAME
+      APPIZZA_DB_PASSWORD: $APPIZZA_DB_PASSWORD
+    restart: unless-stopped
+    ports:
+      - "8000:80"
+    depends_on:
+      - db
+
+volumes:
+  db_data: {}
